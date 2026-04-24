@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Mental Health Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>💚 MindMate</h2>
+            <p>Your safe space to talk | <span class="emergency-badge">⚠️ I detect crisis keywords</span></p>
+        </div>
+        
+        <div class="chat-messages" id="messages">
+            <div class="message bot-message">
+                Hello, I'm here to listen. How are you feeling today?<br>
+                <small style="color: #666;">⚠️ If you're in crisis, please call 988 (Suicide & Crisis Lifeline)</small>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typing">MindMate is typing...</div>
+        
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off">
+            <button id="sendBtn">Send ➤</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
