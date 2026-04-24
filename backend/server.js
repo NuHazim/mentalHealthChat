@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-
+require('dotenv').config({ path: './backend/.env' });
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('frontend'));  // ← ADD THIS LINE
 
 // Groq API configuration (key is hidden on server)
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
