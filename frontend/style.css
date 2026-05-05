@@ -54,10 +54,24 @@ body {
     margin-bottom: 15px;
     padding: 10px 15px;
     border-radius: 18px;
-    max-width: 80%;
+    max-width: fit-content;   /* 🔥 key fix */
+    width: fit-content;       /* shrink to content */
+    max-width: 70%;           /* prevent overly long messages */
     word-wrap: break-word;
 }
+.user-message {
+    background: #667eea;
+    color: white;
+    margin-left: auto;
+    text-align: right;
+}
 
+.bot-message {
+    background: white;
+    color: #333;
+    border: 1px solid #ddd;
+    margin-right: auto;
+}
 .user-message {
     background: #667eea;
     color: white;
@@ -98,9 +112,12 @@ body {
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 25px;
+    border-radius: 15px;
     font-size: 16px;
     outline: none;
+    resize: none;
+    max-height: 120px;
+    overflow-y: auto;
 }
 
 #userInput:focus {

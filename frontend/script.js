@@ -56,13 +56,14 @@ async function getBotResponse(userMessage) {
 // ===== CHAT FUNCTIONALITY =====
 async function sendMessage() {
     const inputField = document.getElementById('userInput');
+    
     const message = inputField.value.trim();
     
     if (!message) return;
     
     // Clear input
     inputField.value = '';
-    
+    inputField.style.height = 'auto';  // 🔥 reset height
     // Display user message
     addMessage(message, 'user');
     
@@ -90,15 +91,17 @@ function addMessage(text, sender) {
     const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}-message`;
-    messageDiv.textContent = text;
-    messagesDiv.appendChild(messageDiv);
+    messageDiv.innerHTML = text.replace(/\n/g, '<br>');    messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
 // ===== EVENT LISTENERS =====
 document.getElementById('sendBtn').addEventListener('click', sendMessage);
-document.getElementById('userInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
+document.getElementById('userInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // prevent newline
+        sendMessage();
+    }
 });
 
 // Check if backend is reachable
@@ -117,5 +120,9 @@ async function checkBackend() {
         addMessage('⚠️ Backend server not running. Please start the server with "node backend/server.js"', 'bot');
     }
 }
-
+const inputField = document.getElementById('userInput');
+inputField.addEventListener('input', () => {
+    inputField.style.height = 'auto';
+    inputField.style.height = inputField.scrollHeight + 'px';
+});
 checkBackend();
