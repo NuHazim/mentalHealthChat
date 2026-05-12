@@ -59,8 +59,10 @@ mentalHealthChat/
 
    ```env
    GROQ_API_KEY=your_groq_api_key_here
+   PORT=3000
+   # or try 5000 for port
    ```
-
+   Create a backend folder and put .env file inside
 4. **Start the server**
 
    ```bash
